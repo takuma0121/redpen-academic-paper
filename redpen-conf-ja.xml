@@ -1,4 +1,4 @@
-<redpen-conf lang="ja">
+<redpen-conf lang="ja" variant="zenkaku2">
     <validators>
         <!--Rules on sentence length-->
         <validator name="SentenceLength">
@@ -19,7 +19,10 @@
         <validator name="JapaneseJoyoKanji" />
         <!-- <validator name="LongKanjiChain" /> -->
         <validator name="DoubledConjunctiveParticleGa" />
-        <!--<validator name="SuggestExpression" />-->
+        <validator name="SuggestExpression">
+          <!-- <property name="dict" value="suggest_expressions.tsv" /> -->
+          <property name="map" value="{更に,さらに}" />
+        </validator>
 
         <!--Rules on symbols and terminologies-->
         <!-- <validator name="InvalidSymbol"/> -->
