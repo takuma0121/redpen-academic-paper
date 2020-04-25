@@ -1,16 +1,23 @@
 FROM alpine:3.9
 
 RUN apk update
-RUN apk --no-cache add tar wget openjdk8
+RUN apk --no-cache add \
+    tar \
+    openjdk8 \
+    wget 
 
-RUN wget https://github.com/redpen-cc/redpen/releases/download/redpen-1.10.3/redpen-1.10.3.tar.gz
-RUN tar xvf redpen-1.10.3.tar.gz
+
+ARG VERSION="1.10.3"
+RUN wget https://github.com/redpen-cc/redpen/releases/download/redpen-${VERSION}/redpen-${VERSION}.tar.gz
+RUN tar xvf redpen-${VERSION}.tar.gz
+RUN rm -rf redpen-${VERSION}.tar.gz
 RUN mkdir -p /user/local/redpen
-RUN mv redpen-distribution-1.10.3 /usr/local/redpen
+RUN mv redpen-distribution-${VERSION} /usr/local/redpen
 
 ENV PATH="/usr/local/redpen/bin:${PATH}"
 
-WORKDIR /usr/local/documents
+WORKDIR /document
+COPY . /document
 
 ENTRYPOINT [ "redpen" ]
 CMD [ "--help" ]
