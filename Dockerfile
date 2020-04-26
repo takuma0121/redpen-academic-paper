@@ -1,7 +1,7 @@
 FROM alpine:3.9
 
-RUN apk update
-RUN apk --no-cache add \
+RUN apk update && \
+    apk --no-cache add \
     tar \
     openjdk8 \
     wget 
@@ -17,7 +17,3 @@ RUN mv redpen-distribution-${VERSION} /usr/local/redpen
 ENV PATH="/usr/local/redpen/bin:${PATH}"
 
 WORKDIR /document
-COPY . /document
-
-ENTRYPOINT [ "redpen" ]
-CMD [ "--help" ]
