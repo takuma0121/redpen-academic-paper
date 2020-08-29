@@ -17,3 +17,7 @@ RUN mv redpen-distribution-${VERSION} /usr/local/redpen
 ENV PATH="/usr/local/redpen/bin:${PATH}"
 
 WORKDIR /document
+
+COPY ./config /document
+
+CMD ["/bin/bash", "-c", "redpen", "-c", "redpen-conf-ja.xml"]
