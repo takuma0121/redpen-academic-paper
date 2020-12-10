@@ -20,4 +20,4 @@ WORKDIR /document
 
 COPY ./config /document
 
-CMD ["/bin/bash", "-c", "redpen", "-c", "redpen-conf-ja.xml"]
+CMD ["/bin/ash"]
